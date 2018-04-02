@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Dj</string>
+    <string name="electronic_genre">Electronic/Dance</string>
+    <string name="disco_genre">Disco</string>
+    <string name="pop_genre">Pop</string>
+    <string name="latin_genre">Latin</string>
+    <string name="rap_genre">Rap</string>
+    <string name="rock_genre">Rock</string>
+    <string name="tools_melody_singer"><![CDATA[David Guetta, Martin Garrix & Brooks]]></string>
+    <string name="tools_melody_title">Like I Do</string>
+</resources>

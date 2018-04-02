@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/s_padding"
+    android:layout_marginStart="@dimen/s_padding"
+    android:layout_marginTop="@dimen/s_padding"
+    android:background="@color/buttonColor"
+    android:padding="@dimen/m_padding">
+
+    <ImageView
+        style="@style/PlaylistMelodyLogo"
+        android:id="@+id/melody_logo"
+        tools:src="@drawable/david_guetta__martin_garrix___brooks_like_i_do" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/melody_logo"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/melody_title_text"
+            style="@style/PlaylistMelodyTitle"
+            tools:text="@string/tools_melody_title" />
+
+        <TextView
+            style="@style/PlaylistMelodySinger"
+            android:id="@+id/melody_singer_text"
+            tools:text="@string/tools_melody_singer" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/play_circle_outline_black_24dp" />
+
+</RelativeLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/m_padding"
+    android:background="@color/buttonColor"
+    android:orientation="horizontal"
+    android:padding="@dimen/m_padding">
+
+    <ImageView
+        style="@style/PlayerMelodyLogo"
+        android:id="@+id/melody_logo"
+        tools:src="@drawable/david_guetta__martin_garrix___brooks_like_i_do" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/m_padding">
+
+        <TextView
+            style="@style/PlayerMelodyTitle"
+            android:id="@+id/melody_title_text"
+            tools:text="@string/tools_melody_title" />
+
+        <TextView
+            style="@style/PlayerMelodySinger"
+            android:id="@+id/melody_singer_text"
+            tools:text="@string/tools_melody_singer" />
+
+        <View
+            android:id="@+id/separator_2"
+            style="@style/PlayerSeparator" />
+
+        <SeekBar
+            android:id="@+id/seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/seekbar_drawable"
+            android:secondaryProgress="0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/m_padding">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/play_pause_button"
+                    style="@style/PlayerButton"
+                    android:background="@drawable/play_circle_outline_black_24dp" />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageButton
+                    android:id="@+id/stop_button"
+                    style="@style/PlayerButton"
+                    android:background="@drawable/stop_circle_outline_black_24dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
