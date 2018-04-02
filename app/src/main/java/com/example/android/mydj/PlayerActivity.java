@@ -54,6 +54,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    //setting and displaying melody details
     public void settingMelodyDetails(){
         melodyLogoImageView.setImageResource(melodyLogoId);
         melodyTitleTextView.setText(melodyTitle);
