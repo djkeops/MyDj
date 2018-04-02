@@ -55,7 +55,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     //setting and displaying melody details
-    public void settingMelodyDetails(){
+    public void settingMelodyDetails() {
         melodyLogoImageView.setImageResource(melodyLogoId);
         melodyTitleTextView.setText(melodyTitle);
         melodySingerTextView.setText(melodySinger);
@@ -63,18 +63,16 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if (view.equals(playPauseButton)){
-            if (playPauseButton.getTag().equals(R.drawable.play_circle_outline_black_24dp)){
+        if (view.equals(playPauseButton)) {
+            if (playPauseButton.getTag().equals(R.drawable.play_circle_outline_black_24dp)) {
                 playPauseButton.setBackgroundResource(R.drawable.pause_circle_outline_black_24dp);
                 playPauseButton.setTag(R.drawable.pause_circle_outline_black_24dp);
-            }
-            else {
+            } else {
                 playPauseButton.setBackgroundResource(R.drawable.play_circle_outline_black_24dp);
                 playPauseButton.setTag(R.drawable.play_circle_outline_black_24dp);
             }
-        }
-        else if (view.equals(stopButton)){
-            if (playPauseButton.getTag().equals(R.drawable.pause_circle_outline_black_24dp)){
+        } else if (view.equals(stopButton)) {
+            if (playPauseButton.getTag().equals(R.drawable.pause_circle_outline_black_24dp)) {
                 playPauseButton.setBackgroundResource(R.drawable.play_circle_outline_black_24dp);
                 playPauseButton.setTag(R.drawable.play_circle_outline_black_24dp);
             }

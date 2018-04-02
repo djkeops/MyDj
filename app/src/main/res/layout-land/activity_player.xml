@@ -9,8 +9,8 @@
     android:padding="@dimen/m_padding">
 
     <ImageView
-        style="@style/PlayerMelodyLogo"
         android:id="@+id/melody_logo"
+        style="@style/PlayerMelodyLogo"
         tools:src="@drawable/david_guetta__martin_garrix___brooks_like_i_do" />
 
     <LinearLayout
@@ -20,13 +20,13 @@
         android:paddingStart="@dimen/m_padding">
 
         <TextView
-            style="@style/PlayerMelodyTitle"
             android:id="@+id/melody_title_text"
+            style="@style/PlayerMelodyTitle"
             tools:text="@string/tools_melody_title" />
 
         <TextView
-            style="@style/PlayerMelodySinger"
             android:id="@+id/melody_singer_text"
+            style="@style/PlayerMelodySinger"
             tools:text="@string/tools_melody_singer" />
 
         <View

@@ -43,21 +43,29 @@ public class Melody {
     /**
      * Get the title of the Melody
      */
-    public String getMelodyTitle() { return mMelodyTitle; }
+    public String getMelodyTitle() {
+        return mMelodyTitle;
+    }
 
     /**
      * Get the singer of the Melody
      */
-    public String getMelodySinger() { return mMelodySinger; }
+    public String getMelodySinger() {
+        return mMelodySinger;
+    }
 
     /**
      * Get the the id of the logo from the drawable folder
      */
-    public int getMelodyLogoId() { return mMelodyLogoId; }
+    public int getMelodyLogoId() {
+        return mMelodyLogoId;
+    }
 
     /**
      * Get the the id of the melody from the music folder
      */
-    public int getMelodyResId() { return mMelodyResId; }
+    public int getMelodyResId() {
+        return mMelodyResId;
+    }
 
 }

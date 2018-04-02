@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 /**
  * Created by Adrian on 25.03.2018.
- *
+ * <p>
  * An ArrayAdapter that provide the layout for each melody
  */
 
 public class MelodyAdapter extends ArrayAdapter<Melody> {
 
-    public MelodyAdapter(Activity context, ArrayList<Melody> melodies){
+    public MelodyAdapter(Activity context, ArrayList<Melody> melodies) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews, the adapter is not
@@ -34,7 +34,7 @@ public class MelodyAdapter extends ArrayAdapter<Melody> {
 
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
-        if(listItemView == null) {
+        if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.melodies_item_layout, parent, false);
         }
 

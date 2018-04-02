@@ -14,13 +14,13 @@ import java.util.ArrayList;
 
 /**
  * Created by Adrian on 24.03.2018.
- *
+ * <p>
  * An ArrayAdapter that provide the layout for each genre
  */
 
 public class GenreAdapter extends ArrayAdapter<Genre> {
 
-    public GenreAdapter(Activity context, ArrayList<Genre> genres){
+    public GenreAdapter(Activity context, ArrayList<Genre> genres) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews, the adapter is not
@@ -34,7 +34,7 @@ public class GenreAdapter extends ArrayAdapter<Genre> {
 
         // Check if the existing view is being reused, otherwise inflate the view
         View gridItemView = convertView;
-        if(gridItemView == null) {
+        if (gridItemView == null) {
             gridItemView = LayoutInflater.from(getContext()).inflate(R.layout.genres_item_layout, parent, false);
         }
 
