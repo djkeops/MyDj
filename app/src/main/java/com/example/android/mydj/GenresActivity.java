@@ -19,6 +19,7 @@ public class GenresActivity extends AppCompatActivity implements GridView.OnItem
         setContentView(R.layout.activity_genres);
 
         //Create an ArrayList of Genre objects
+        //All genres images are from http://www.freepik.com
         ArrayList<Genre> genres = new ArrayList<Genre>();
         genres.add(new Genre(getString(R.string.electronic_genre), R.drawable.electronic));
         genres.add(new Genre(getString(R.string.disco_genre), R.drawable.disco));

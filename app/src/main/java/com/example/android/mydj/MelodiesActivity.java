@@ -32,6 +32,7 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         ArrayList<Melody> melodies = new ArrayList<Melody>();
 
         //Depending on the user's choice by genre, the Melody objects are created
+        //All melodies images are from http://www.shazam.com
         if (selectedGenre.equals(getString(R.string.electronic_genre))) {
             melodies.add(new Melody("Like I Do", "David Guetta, Martin Garrix & Brooks", R.drawable.david_guetta__martin_garrix___brooks_like_i_do, R.raw.jax_jones_ft__ina_wroldsen_breathe));
             melodies.add(new Melody("Breathe", "Jax Jones Feat. Ina Wroldsen", R.drawable.jax_jones_ft__ina_wroldsen_breathe, R.raw.jax_jones_ft__ina_wroldsen_breathe));
