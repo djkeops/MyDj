@@ -143,7 +143,8 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
             }
         }
     }
-    
+
+
     public void displayNowPlayingMelody() {
 
         //Find the components of the nowPlayingLayout

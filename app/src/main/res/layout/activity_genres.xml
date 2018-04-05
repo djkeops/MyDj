@@ -16,50 +16,5 @@
         android:orientation="vertical"
         android:padding="@dimen/m_padding" />
 
-    <RelativeLayout
-        android:id="@+id/now_playing_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/buttonColor"
-        android:padding="@dimen/s_padding"
-        android:visibility="visible">
-
-        <LinearLayout
-            android:id="@+id/now_playing_melody"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/buttonColor"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/NowPlayingLabel"
-                android:text="@string/now_is_playing"
-                android:textAlignment="center" />
-
-            <TextView
-                android:id="@+id/now_playing_melody_title"
-                style="@style/PlaylistMelodyTitle"
-                android:textAlignment="center"
-                tools:text="@string/tools_melody_title" />
-
-            <TextView
-                android:id="@+id/now_playing_melody_singer"
-                style="@style/PlaylistMelodySinger"
-                android:textAlignment="center"
-                tools:text="@string/tools_melody_singer" />
-
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/play_pause_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/genres_black_24dp" />
-
-    </RelativeLayout>
-
 </RelativeLayout>
 
