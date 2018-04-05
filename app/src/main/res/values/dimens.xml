@@ -15,5 +15,5 @@
     <dimen name="melody_logo_margin_top">30dp</dimen>
     <dimen name="player_button_dimen">50dp</dimen>
     <dimen name="seek_bar_radius">10dp</dimen>
-    <dimen name="logo_circle_dimen">300dp</dimen>
+    <dimen name="logo_circle_dimen">200dp</dimen>
 </resources>

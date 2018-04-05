@@ -1,5 +1,6 @@
 package com.example.android.mydj;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 public class PlayerActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Initialize variables
+    private String selectedGenre;
     private int melodyLogoId;
     private String melodyTitle;
     private String melodySinger;
@@ -29,6 +31,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_player);
 
         Bundle extras = getIntent().getExtras();
+
+        selectedGenre = extras.getString("genre");
         melodyLogoId = extras.getInt("melodyLogoId");
         melodyTitle = extras.getString("melodyTitle");
         melodySinger = extras.getString("melodySinger");
@@ -79,4 +83,26 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+        //Intent that retains now playing melody
+        Intent retainNowPlayingMelody = new Intent(this, MelodiesActivity.class);
+        Bundle nowPlayingExtras = new Bundle();
+
+        if (playPauseButton.getTag().equals(R.drawable.pause_circle_outline_black_24dp)) {
+
+            //put in the bundle the melody title, singer and selected music genre
+            nowPlayingExtras.putString("genre", selectedGenre);
+            nowPlayingExtras.putString("melodyTitle", melodyTitle);
+            nowPlayingExtras.putString("melodySinger", melodySinger);
+        } else {
+            //put in the bundle the selected music genre
+            nowPlayingExtras.putString("genre", selectedGenre);
+        }
+
+        //transfer the extras to the MelodiesActivity
+        retainNowPlayingMelody.putExtras(nowPlayingExtras);
+        startActivity(retainNowPlayingMelody);
+    }
 }

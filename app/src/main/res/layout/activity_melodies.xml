@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/melodies_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:padding="@dimen/m_padding"
-    tools:context="com.example.android.mydj.MelodiesActivity" />
+    tools:context="com.example.android.mydj.MelodiesActivity">
+
+    <ListView
+        android:id="@+id/melodies_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/now_playing_layout"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/m_padding" />
+
+    <RelativeLayout
+        android:id="@+id/now_playing_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/buttonColor"
+        android:padding="@dimen/s_padding"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/now_playing_melody_title"
+                style="@style/PlaylistMelodyTitle"
+                tools:text="@string/tools_melody_title" />
+
+            <TextView
+                android:id="@+id/now_playing_melody_singer"
+                style="@style/PlaylistMelodySinger"
+                tools:text="@string/tools_melody_singer" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/play_pause_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/play_circle_outline_black_24dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+

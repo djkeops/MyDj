@@ -7,23 +7,37 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MelodiesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class MelodiesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
 
+    //Initialize variables
     private String selectedGenre;
+    private String nowPMelodyTitle;
+    private String nowPMmelodySinger;
+    //TODO: SA VERIFIC DACA MAI ESTE NEVOIE SA IL PASTREZ
+    private int melodyLogoId;
+
+    private RelativeLayout nowPlayingLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_melodies);
 
+        //get extras from GenresActivity and from PlayerActivity
         Bundle bundle = getIntent().getExtras();
-        selectedGenre = bundle.getString("genre");
+        if (bundle != null) {
+            selectedGenre = bundle.getString("genre");
+            nowPMelodyTitle = bundle.getString("melodyTitle");
+            nowPMmelodySinger = bundle.getString("melodySinger");
+        }
 
         createPlaylist();
+        displayNowPlayingMelody();
     }
 
     public void createPlaylist() {
@@ -107,6 +121,24 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         listView.setOnItemClickListener(this);
     }
 
+    public void displayNowPlayingMelody() {
+
+        TextView nowPlayingMelodyTitle = (TextView) findViewById(R.id.now_playing_melody_title);
+        TextView nowPlayingMelodySinger = (TextView) findViewById(R.id.now_playing_melody_singer);
+        nowPlayingLayout = (RelativeLayout) findViewById(R.id.now_playing_layout);
+        ImageView playPauseIndicator = (ImageView) findViewById(R.id.play_pause_indicator);
+
+        if (nowPMelodyTitle != null && nowPMmelodySinger != null) {
+            nowPlayingLayout.setVisibility(View.VISIBLE);
+            nowPlayingLayout.setClickable(true);
+            nowPlayingMelodyTitle.setText(nowPMelodyTitle);
+            nowPlayingMelodySinger.setText(nowPMmelodySinger);
+            playPauseIndicator.setImageResource(R.drawable.pause_circle_outline_black_24dp);
+        } else {
+            nowPlayingLayout.setVisibility(View.GONE);
+        }
+    }
+
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -122,11 +154,12 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
 
         ImageView melodyLogoView = (ImageView) view.findViewById(R.id.melody_logo);
 
-        int melodyLogoId = (int) melodyLogoView.getTag();
+        melodyLogoId = (int) melodyLogoView.getTag();
 
         //Intent that open the MelodiesActivity
         Intent openPlayerActivity = new Intent(this, PlayerActivity.class);
         Bundle extras = new Bundle();
+        extras.putString("genre", selectedGenre);
         extras.putString("melodyTitle", melodyTitle);
         extras.putString("melodySinger", melodySinger);
         extras.putInt("melodyLogoId", melodyLogoId);
@@ -134,5 +167,21 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         //transfer the selected music genre to the MelodiesActivity
         openPlayerActivity.putExtras(extras);
         startActivity(openPlayerActivity);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.equals(nowPlayingLayout)) {
+            Intent openPlayerActivity = new Intent(this, PlayerActivity.class);
+            Bundle extras = new Bundle();
+            extras.putString("genre", selectedGenre);
+            extras.putString("melodyTitle", nowPMelodyTitle);
+            extras.putString("melodySinger", nowPMmelodySinger);
+            extras.putInt("melodyLogoId", melodyLogoId);
+
+            //transfer the selected music genre to the MelodiesActivity
+            openPlayerActivity.putExtras(extras);
+            startActivity(openPlayerActivity);
+        }
     }
 }
