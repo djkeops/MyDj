@@ -1,5 +1,6 @@
 package com.example.android.mydj;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     private int melodyLogoId;
     private String melodyTitle;
     private String melodySinger;
+    private boolean isPlaying;
 
     //Initialize Views
     private ImageView melodyLogoImageView;
@@ -36,6 +38,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         melodyLogoId = extras.getInt("melodyLogoId");
         melodyTitle = extras.getString("melodyTitle");
         melodySinger = extras.getString("melodySinger");
+        isPlaying = extras.getBoolean("isPlaying");
 
         // Get Views Id
         melodyLogoImageView = (ImageView) findViewById(R.id.melody_logo);
@@ -54,8 +57,6 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         stopButton.setOnClickListener(this);
 
         //help to handle play pause button behavior until I implement MediaPlayer
-        playPauseButton.setTag(R.drawable.play_circle_outline_black_24dp);
-
     }
 
     //setting and displaying melody details
@@ -63,6 +64,12 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         melodyLogoImageView.setImageResource(melodyLogoId);
         melodyTitleTextView.setText(melodyTitle);
         melodySingerTextView.setText(melodySinger);
+        if (isPlaying) {
+            playPauseButton.setBackgroundResource(R.drawable.pause_circle_outline_black_24dp);
+            playPauseButton.setTag(R.drawable.pause_circle_outline_black_24dp);
+        } else {
+            playPauseButton.setTag(R.drawable.play_circle_outline_black_24dp);
+        }
     }
 
     @Override
@@ -87,7 +94,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
 
         //Intent that retains now playing melody
-        Intent retainNowPlayingMelody = new Intent(this, MelodiesActivity.class);
+        Intent retainNowPlayingMelody = new Intent();
         Bundle nowPlayingExtras = new Bundle();
 
         if (playPauseButton.getTag().equals(R.drawable.pause_circle_outline_black_24dp)) {
@@ -96,13 +103,21 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
             nowPlayingExtras.putString("genre", selectedGenre);
             nowPlayingExtras.putString("melodyTitle", melodyTitle);
             nowPlayingExtras.putString("melodySinger", melodySinger);
+
+            //transfer the extras to the MelodiesActivity
+            retainNowPlayingMelody.putExtras(nowPlayingExtras);
+
+            setResult(Activity.RESULT_OK, retainNowPlayingMelody);
+            finish();
         } else {
             //put in the bundle the selected music genre
             nowPlayingExtras.putString("genre", selectedGenre);
+            //transfer the extras to the MelodiesActivity
+            retainNowPlayingMelody.putExtras(nowPlayingExtras);
+
+            setResult(Activity.RESULT_OK, retainNowPlayingMelody);
+            finish();
         }
 
-        //transfer the extras to the MelodiesActivity
-        retainNowPlayingMelody.putExtras(nowPlayingExtras);
-        startActivity(retainNowPlayingMelody);
     }
 }

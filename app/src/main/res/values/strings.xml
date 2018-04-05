@@ -8,4 +8,5 @@
     <string name="rock_genre">Rock</string>
     <string name="tools_melody_singer"><![CDATA[David Guetta, Martin Garrix & Brooks]]></string>
     <string name="tools_melody_title">Like I Do</string>
+    <string name="now_is_playing">Now is playing:</string>
 </resources>

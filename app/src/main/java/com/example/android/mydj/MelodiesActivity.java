@@ -1,11 +1,15 @@
 package com.example.android.mydj;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -21,23 +25,20 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
     //TODO: SA VERIFIC DACA MAI ESTE NEVOIE SA IL PASTREZ
     private int melodyLogoId;
 
-    private RelativeLayout nowPlayingLayout;
+    private LinearLayout nowPlayingMelody;
+    private ImageButton genresButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_melodies);
 
-        //get extras from GenresActivity and from PlayerActivity
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             selectedGenre = bundle.getString("genre");
-            nowPMelodyTitle = bundle.getString("melodyTitle");
-            nowPMmelodySinger = bundle.getString("melodySinger");
         }
 
         createPlaylist();
-        displayNowPlayingMelody();
     }
 
     public void createPlaylist() {
@@ -121,19 +122,44 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         listView.setOnItemClickListener(this);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                //get extras from GenresActivity and from PlayerActivity
+                Bundle bundle = data.getExtras();
+                if (bundle != null) {
+                    selectedGenre = bundle.getString("genre");
+                    nowPMelodyTitle = bundle.getString("melodyTitle");
+                    nowPMmelodySinger = bundle.getString("melodySinger");
+                    displayNowPlayingMelody();
+                }
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+                Bundle bundle = getIntent().getExtras();
+                if (bundle != null) {
+                    selectedGenre = bundle.getString("genre");
+                }
+            }
+        }
+    }
+
     public void displayNowPlayingMelody() {
 
         TextView nowPlayingMelodyTitle = (TextView) findViewById(R.id.now_playing_melody_title);
         TextView nowPlayingMelodySinger = (TextView) findViewById(R.id.now_playing_melody_singer);
-        nowPlayingLayout = (RelativeLayout) findViewById(R.id.now_playing_layout);
-        ImageView playPauseIndicator = (ImageView) findViewById(R.id.play_pause_indicator);
+        RelativeLayout nowPlayingLayout = (RelativeLayout) findViewById(R.id.now_playing_layout);
+        nowPlayingMelody = (LinearLayout) findViewById(R.id.now_playing_melody);
+        genresButton = (ImageButton) findViewById(R.id.genres_button);
 
         if (nowPMelodyTitle != null && nowPMmelodySinger != null) {
             nowPlayingLayout.setVisibility(View.VISIBLE);
-            nowPlayingLayout.setClickable(true);
+            nowPlayingMelody.setOnClickListener(this);
+            genresButton.setOnClickListener(this);
             nowPlayingMelodyTitle.setText(nowPMelodyTitle);
             nowPlayingMelodySinger.setText(nowPMmelodySinger);
-            playPauseIndicator.setImageResource(R.drawable.pause_circle_outline_black_24dp);
         } else {
             nowPlayingLayout.setVisibility(View.GONE);
         }
@@ -166,22 +192,25 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
 
         //transfer the selected music genre to the MelodiesActivity
         openPlayerActivity.putExtras(extras);
-        startActivity(openPlayerActivity);
+        startActivityForResult(openPlayerActivity, 1);
     }
 
     @Override
     public void onClick(View view) {
-        if (view.equals(nowPlayingLayout)) {
+        if (view.equals(nowPlayingMelody)) {
             Intent openPlayerActivity = new Intent(this, PlayerActivity.class);
             Bundle extras = new Bundle();
             extras.putString("genre", selectedGenre);
             extras.putString("melodyTitle", nowPMelodyTitle);
             extras.putString("melodySinger", nowPMmelodySinger);
             extras.putInt("melodyLogoId", melodyLogoId);
+            extras.putBoolean("isPlaying", true);
 
             //transfer the selected music genre to the MelodiesActivity
             openPlayerActivity.putExtras(extras);
-            startActivity(openPlayerActivity);
+            startActivityForResult(openPlayerActivity, 1);
+        } else if (view.equals(genresButton)) {
+            super.onBackPressed();
         }
     }
 }

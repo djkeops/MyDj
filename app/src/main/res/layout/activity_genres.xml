@@ -26,29 +26,38 @@
         android:visibility="visible">
 
         <LinearLayout
+            android:id="@+id/now_playing_melody"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/buttonColor"
             android:orientation="vertical">
+
+            <TextView
+                style="@style/NowPlayingLabel"
+                android:text="@string/now_is_playing"
+                android:textAlignment="center" />
 
             <TextView
                 android:id="@+id/now_playing_melody_title"
                 style="@style/PlaylistMelodyTitle"
+                android:textAlignment="center"
                 tools:text="@string/tools_melody_title" />
 
             <TextView
                 android:id="@+id/now_playing_melody_singer"
                 style="@style/PlaylistMelodySinger"
+                android:textAlignment="center"
                 tools:text="@string/tools_melody_singer" />
 
         </LinearLayout>
 
-        <ImageView
+        <ImageButton
             android:id="@+id/play_pause_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/play_circle_outline_black_24dp" />
+            android:background="@drawable/genres_black_24dp" />
 
     </RelativeLayout>
 
