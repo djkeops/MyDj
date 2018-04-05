@@ -34,11 +34,13 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
 
         Bundle extras = getIntent().getExtras();
 
-        selectedGenre = extras.getString("genre");
-        melodyLogoId = extras.getInt("melodyLogoId");
-        melodyTitle = extras.getString("melodyTitle");
-        melodySinger = extras.getString("melodySinger");
-        isPlaying = extras.getBoolean("isPlaying");
+        if (extras != null) {
+            selectedGenre = extras.getString("genre");
+            melodyLogoId = extras.getInt("melodyLogoId");
+            melodyTitle = extras.getString("melodyTitle");
+            melodySinger = extras.getString("melodySinger");
+            isPlaying = extras.getBoolean("isPlaying");
+        }
 
         // Get Views Id
         melodyLogoImageView = (ImageView) findViewById(R.id.melody_logo);
@@ -94,7 +96,7 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     public void onBackPressed() {
 
         //Intent that retains now playing melody
-        Intent retainNowPlayingMelody = new Intent();
+        Intent returnToMelodiesActivity = new Intent();
         Bundle nowPlayingExtras = new Bundle();
 
         if (playPauseButton.getTag().equals(R.drawable.pause_circle_outline_black_24dp)) {
@@ -105,17 +107,17 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
             nowPlayingExtras.putString("melodySinger", melodySinger);
 
             //transfer the extras to the MelodiesActivity
-            retainNowPlayingMelody.putExtras(nowPlayingExtras);
+            returnToMelodiesActivity.putExtras(nowPlayingExtras);
 
-            setResult(Activity.RESULT_OK, retainNowPlayingMelody);
+            setResult(Activity.RESULT_OK, returnToMelodiesActivity);
             finish();
         } else {
             //put in the bundle the selected music genre
             nowPlayingExtras.putString("genre", selectedGenre);
             //transfer the extras to the MelodiesActivity
-            retainNowPlayingMelody.putExtras(nowPlayingExtras);
+            returnToMelodiesActivity.putExtras(nowPlayingExtras);
 
-            setResult(Activity.RESULT_OK, retainNowPlayingMelody);
+            setResult(Activity.RESULT_CANCELED, returnToMelodiesActivity);
             finish();
         }
 

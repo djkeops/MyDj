@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
@@ -22,9 +21,9 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
     private String selectedGenre;
     private String nowPMelodyTitle;
     private String nowPMmelodySinger;
-    //TODO: SA VERIFIC DACA MAI ESTE NEVOIE SA IL PASTREZ
     private int melodyLogoId;
 
+    //Initialize Views
     private LinearLayout nowPlayingMelody;
     private ImageButton genresButton;
 
@@ -37,7 +36,6 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         if (bundle != null) {
             selectedGenre = bundle.getString("genre");
         }
-
         createPlaylist();
     }
 
@@ -145,15 +143,17 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
             }
         }
     }
-
+    
     public void displayNowPlayingMelody() {
 
+        //Find the components of the nowPlayingLayout
         TextView nowPlayingMelodyTitle = (TextView) findViewById(R.id.now_playing_melody_title);
         TextView nowPlayingMelodySinger = (TextView) findViewById(R.id.now_playing_melody_singer);
         RelativeLayout nowPlayingLayout = (RelativeLayout) findViewById(R.id.now_playing_layout);
         nowPlayingMelody = (LinearLayout) findViewById(R.id.now_playing_melody);
         genresButton = (ImageButton) findViewById(R.id.genres_button);
 
+        //Display nowPlayingLayout if a melody is playing
         if (nowPMelodyTitle != null && nowPMmelodySinger != null) {
             nowPlayingLayout.setVisibility(View.VISIBLE);
             nowPlayingMelody.setOnClickListener(this);
@@ -165,6 +165,7 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         }
     }
 
+    //Depending on the clicked item from the playlist starts the PlayerActivity
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -178,8 +179,10 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
         //Store the value of melody_singer_text in a variable
         String melodySinger = melodySingerView.getText().toString();
 
+        //Find the ImageView with the id melody_logo
         ImageView melodyLogoView = (ImageView) view.findViewById(R.id.melody_logo);
 
+        //Store the tag value in a variable
         melodyLogoId = (int) melodyLogoView.getTag();
 
         //Intent that open the MelodiesActivity
@@ -197,6 +200,8 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
 
     @Override
     public void onClick(View view) {
+
+        //If the LinearLayout with now playing melody is clicked starts the PlayerActivity
         if (view.equals(nowPlayingMelody)) {
             Intent openPlayerActivity = new Intent(this, PlayerActivity.class);
             Bundle extras = new Bundle();
@@ -209,7 +214,10 @@ public class MelodiesActivity extends AppCompatActivity implements AdapterView.O
             //transfer the selected music genre to the MelodiesActivity
             openPlayerActivity.putExtras(extras);
             startActivityForResult(openPlayerActivity, 1);
-        } else if (view.equals(genresButton)) {
+
+        }
+        //If the genresButton is clicked the user is returned to the GenresActivity
+        else if (view.equals(genresButton)) {
             super.onBackPressed();
         }
     }
