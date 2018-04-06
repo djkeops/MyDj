@@ -26,6 +26,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
     //Initialize Controls
     private ImageButton playPauseButton;
     private ImageButton stopButton;
+    private ImageButton genresButton;
+    private ImageButton playlistButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         // Get Controls Id
         playPauseButton = (ImageButton) findViewById(R.id.play_pause_button);
         stopButton = (ImageButton) findViewById(R.id.stop_button);
+        genresButton = (ImageButton) findViewById(R.id.genres_button);
+        playlistButton = (ImageButton) findViewById(R.id.playlist_button);
 
         //Display melody details
         settingMelodyDetails();
@@ -57,6 +61,9 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
         //Set OnClickListener on Controls
         playPauseButton.setOnClickListener(this);
         stopButton.setOnClickListener(this);
+        playlistButton.setOnClickListener(this);
+        genresButton.setOnClickListener(this);
+
 
         //help to handle play pause button behavior until I implement MediaPlayer
     }
@@ -89,6 +96,12 @@ public class PlayerActivity extends AppCompatActivity implements View.OnClickLis
                 playPauseButton.setBackgroundResource(R.drawable.play_circle_outline_black_24dp);
                 playPauseButton.setTag(R.drawable.play_circle_outline_black_24dp);
             }
+        } else if (view.equals(playlistButton)) {
+            onBackPressed();
+        } else if (view.equals(genresButton)) {
+            Intent openGenresActivity = new Intent(this, GenresActivity.class);
+            startActivity(openGenresActivity);
+            finish();
         }
     }
 

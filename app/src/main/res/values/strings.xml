@@ -9,4 +9,16 @@
     <string name="tools_melody_singer"><![CDATA[David Guetta, Martin Garrix & Brooks]]></string>
     <string name="tools_melody_title">Like I Do</string>
     <string name="now_is_playing">Now is playing:</string>
+    <string name="play_pause_button">Play Button</string>
+    <string name="stop_button">Stop Button</string>
+    <string name="melody_logo">Melody Logo</string>
+    <string name="to_genres_button">To Genres Button</string>
+    <string name="to_player_logo">To Player Logo</string>
+    <string name="genre_logo">Genre Logo</string>
+    <string name="background_logo_circle">Background Logo Circle</string>
+    <string name="app_logo">App Logo</string>
+    <string name="genres_label">Genres</string>
+    <string name="playlist_label">Playlist</string>
+    <string name="player_label">Player</string>
+    <string name="to_playlist_button">To Playlist Button</string>
 </resources>

@@ -21,17 +21,17 @@
         <activity
             android:name=".GenresActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Genres">
+            android:label="@string/genres_label">
         </activity>
         <activity
             android:name=".MelodiesActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Playlist">
+            android:label="@string/playlist_label">
         </activity>
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize"
-            android:label="Player">
+            android:label="@string/player_label">
         </activity>
     </application>
 

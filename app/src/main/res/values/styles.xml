@@ -28,6 +28,12 @@
         <item name="android:layout_height">@dimen/player_button_dimen</item>
     </style>
 
+    <style name="NavigatePlayerButton">
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_width">@dimen/navigate_player_button_dimen</item>
+        <item name="android:layout_height">@dimen/navigate_player_button_dimen</item>
+    </style>
+
     <style name="PlaylistMelodyLogo">
         <item name="android:layout_width">@dimen/melody_logo_dimen_playlist</item>
         <item name="android:layout_height">@dimen/melody_logo_dimen_playlist</item>

@@ -12,6 +12,7 @@
     <ImageView
         android:id="@+id/melody_logo"
         style="@style/PlaylistMelodyLogo"
+        android:contentDescription="@string/melody_logo"
         tools:src="@drawable/david_guetta__martin_garrix___brooks_like_i_do" />
 
     <LinearLayout
@@ -37,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
+        android:contentDescription="@string/to_player_logo"
         android:src="@drawable/play_circle_outline_black_24dp" />
 
 </RelativeLayout>
