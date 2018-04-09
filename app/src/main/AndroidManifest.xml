@@ -21,17 +21,20 @@
         <activity
             android:name=".GenresActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/genres_label">
+            android:label="@string/genres_label"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".MelodiesActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/playlist_label">
+            android:label="@string/playlist_label"
+            android:launchMode="singleTask">
         </activity>
         <activity
             android:name=".PlayerActivity"
             android:configChanges="orientation|screenSize"
-            android:label="@string/player_label">
+            android:label="@string/player_label"
+            android:launchMode="singleTask">
         </activity>
     </application>
 
